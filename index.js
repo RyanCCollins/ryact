@@ -1,7 +1,13 @@
 /* @jsx Ryact */
 import Ryact, { render, useState, useEffect } from './ryact.js';
 
-const Test = () => <h1>Test</h1>;
+const Heading = ({ children }) => {
+  return <h1>{children}</h1>;
+};
+
+const Paragraph = ({ children }) => {
+  return <p>{children}</p>;
+};
 
 const Component = () => {
   const [count, setCount] = useState(0);
@@ -10,17 +16,16 @@ const Component = () => {
     const handler = () => setCount(currentCount => currentCount + 1);
     buttonElem.addEventListener('click', handler);
     return () => buttonElem.removeEventListener('click', handler);
-  }, [buttonElem]);
+  }, []);
 
   return <div>
-    <h1>
-      Test Heading
-    </h1>
-    <p>
+    <Heading>
+      Test
+    </Heading>
+    <Paragraph>
       Test paragraph
-    </p>
+    </Paragraph>
     <button>Click me</button>
-    <Test />
   </div>;
 }
 
